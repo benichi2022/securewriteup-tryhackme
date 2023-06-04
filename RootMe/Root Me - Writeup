@@ -3,5 +3,9 @@
 
 Let's start by deploying the target machine and our attack machine.
 
+Target Machine IP : 10.10.237.141
+
+As always, let's start out by scannning and Enumerating the target.
+
 
 
