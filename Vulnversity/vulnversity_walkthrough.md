@@ -58,12 +58,15 @@ We need a way to bypass this restriction. Let's make a list of potential plausib
 The request is intercepted. We need to send it to intruder.
 
 ![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/c9cabded-e7a2-4c02-955a-51471e4be2bd)
-![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/9a0d3fe8-9e70-4abf-a785-bea65d0d9789)
-![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/9c1fa56a-b9af-4df0-8599-e18910fdc869)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/b86ecc69-89b3-4eda-9ba1-52706502fc14)
 
-In the above screenshots, we are selecting the position i.e extension we want to fuzz and select a list of extensions as payload. And we then launch the attack.
+Add the list of potential acceptable extensions and deselect the "URL-encode", otherwise it will not work. After starting the attack, we get the following result.
 
-![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/0baddac2-8006-4958-ac83-041e31fff33f)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/7a3e16dc-11ce-4791-9beb-90199895afe5)
+
+The odd one among the rest is usually the answer we need. Hence, phtml is the extension we need to use.
+
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/c527f39c-0628-4310-838f-2fcbba16ef4b)
 
 Now that we knows, phtml is allowed. We upload a reverse shell file with such extension. The script can be downloaded from this link : https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
 
@@ -102,6 +105,16 @@ By standing on the shoulder of gaints, let's seek help from gtfobins on how to e
 
 ![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/82dcb99a-5d0d-4de8-bf38-8e3d67886599)
 
+All these series of steps aim to read a file that we don't have permission to read. In our case, we don't have the privilege to read /root/root.txt i.e our final flag. Instead of " id > /tmp/output ", we will execute "cat /root/root.txt > /tmp/root.txt"
+
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/b423a424-a9e3-4024-afd0-6eb36b07042e)
+![image](https://github.com/benichi2022/securewriteup-tryhackme/assets/113864743/4fa9178d-2f94-4997-80d8-2cb507942fbc)
+
+And with that, we are done with room.
+
+Credits: 
+        https://tryhackme.com/p/tryhackme
+        https://tryhackme.com/p/1337rce
 
 
 
