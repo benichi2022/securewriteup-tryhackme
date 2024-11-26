@@ -4,7 +4,7 @@
 
 # My Profile on TryHackMe
 
-https://tryhackme.com/p/Benhur10
+https://tryhackme.com/p/benhur10
 
 # LinkedIn Profile
 
